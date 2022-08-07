@@ -3,6 +3,7 @@ import React from "react";
 import MenuItem from "./MenuItem";
 import BurgerImage from "../../../assets/images/burger.png";
 import PizzaImage from "../../../assets/images/pizza.png";
+import ItemCard from "./ItemCard";
 
 const Container = styled.div({
   width: "100%",
@@ -32,7 +33,10 @@ const DishMenu = () => {
         <MenuItem image={BurgerImage} name="Burger" isActive={false} />
         <MenuItem image={PizzaImage} name="Pizza" isActive={false} />
       </RowContainer>
-      <DishItemContainer></DishItemContainer>
+      <DishItemContainer>
+        <ItemCard />
+        <ItemCard />
+      </DishItemContainer>
     </Container>
   );
 };
