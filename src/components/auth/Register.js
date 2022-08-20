@@ -38,14 +38,22 @@ const Login = () => {
   return (
     <Container>
       <LoginContainer>
-        <LoginHeader>LOGIN FORM</LoginHeader>
+        <LoginHeader>REGISTER FORM</LoginHeader>
         <form className="login-form">
+          <Input type="text" placeholder="First Name" sx={{ width: "100%" }} />
+          <Input type="text" placeholder="Last Name" sx={{ width: "100%" }} />
           <Input type="email" placeholder="Email" sx={{ width: "100%" }} />
           <Input
             type="password"
             placeholder="Password"
             sx={{ width: "100%" }}
           />
+          <Input
+            type="password"
+            placeholder="Confirm Password"
+            sx={{ width: "100%" }}
+          />
+
           <Button
             type="submit"
             variant="contained"
@@ -56,7 +64,7 @@ const Login = () => {
         </form>
 
         <RegisterHere>
-          Don't have an account ?<Link to="/register">Register here</Link>
+          Already have an account ?<Link to="/">Login here</Link>
         </RegisterHere>
       </LoginContainer>
     </Container>
