@@ -1,6 +1,7 @@
 import "./App.css";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
+import ForgotPassword from "./components/auth/ForgotPassword";
 import Header from "./components/header/Header";
 import Main from "./components/main/Main";
 import Navbar from "./components/navbar/Navbar";
@@ -27,6 +28,11 @@ function App() {
           exact
           path="/register"
           element={<Parent Component={Register} />}
+        />
+        <Route
+          exact
+          path="/forgot-password"
+          element={<Parent Component={ForgotPassword} />}
         />
       </Routes>
     </Router>
