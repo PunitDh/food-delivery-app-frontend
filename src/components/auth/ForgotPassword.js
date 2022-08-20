@@ -38,14 +38,10 @@ const Login = () => {
   return (
     <Container>
       <LoginContainer>
-        <LoginHeader>LOGIN FORM</LoginHeader>
+        <LoginHeader>FORGOT PASSWORD FORM</LoginHeader>
         <form className="login-form">
           <Input type="email" placeholder="Email" sx={{ width: "100%" }} />
-          <Input
-            type="password"
-            placeholder="Password"
-            sx={{ width: "100%" }}
-          />
+
           <Button
             type="submit"
             variant="contained"
@@ -57,10 +53,6 @@ const Login = () => {
 
         <RegisterHere>
           Don't have an account ?<Link to="/register">Register here</Link>
-        </RegisterHere>
-
-        <RegisterHere>
-          Forgot password ? <Link to="/forgot-password">Click here</Link>
         </RegisterHere>
       </LoginContainer>
     </Container>
