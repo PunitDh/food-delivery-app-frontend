@@ -65,7 +65,7 @@ const ProfileContainer = styled.div({
   alignItems: "center",
 });
 
-const ImgBox = styled.div({
+export const ImgBox = styled.div({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",

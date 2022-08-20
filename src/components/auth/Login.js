@@ -27,6 +27,12 @@ const LoginHeader = styled.div({
   color: "#FAF9FB",
 });
 
+const RegisterHere = styled.div({
+  fontSize: "16px",
+  margin: "0 20px",
+  color: "rgba(0, 0, 0, 0.7)",
+});
+
 const Login = () => {
   return (
     <Container>
@@ -47,6 +53,8 @@ const Login = () => {
             Submit
           </Button>
         </form>
+
+        <RegisterHere>Don't have an account ? Register here</RegisterHere>
       </LoginContainer>
     </Container>
   );

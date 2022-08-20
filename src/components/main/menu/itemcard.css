@@ -1,0 +1,32 @@
+.item-img {
+  width: 80%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  top: 0px;
+}
+
+.rating-star {
+  font-size: 10px;
+}
+
+.favorite-icon {
+  font-size: 18px;
+  color: #ff000088;
+}
+
+.favorite-icon.active {
+  color: red;
+}
+
+.orange {
+  color: #f8901c !important;
+}
+
+.grey {
+  color: #373848 !important;
+}
+
+.rating .MuiSvgIcon-root {
+  font-size: 16px;
+}
