@@ -8,7 +8,7 @@ const Container = styled.div(({ isActive }) => ({
   minWidth: "80px",
   height: "100px",
   borderRadius: "10px",
-  background: isActive ? "#FAF9FB" : "#F8901C",
+  background: isActive ? "#F8901C" : "#FAF9FB",
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
@@ -55,9 +55,9 @@ const LoadMenu = styled.i({
   transition: "0.5s",
 });
 
-const MenuItem = ({ image, name, isActive }) => {
+const MenuItem = ({ image, name, isActive, onClick }) => {
   return (
-    <Container isActive={isActive}>
+    <Container isActive={isActive} onClick={onClick}>
       <ImgBox>
         <img src={image} alt="" className="menu-item-image" />
       </ImgBox>
