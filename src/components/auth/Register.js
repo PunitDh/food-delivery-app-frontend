@@ -4,8 +4,11 @@ import { Link } from "react-router-dom";
 import "./login.css";
 import { Container, AuthContainer, AuthHeader, AuthLinks } from "./authStyles";
 import { createNewUser } from "../../api/auth";
+import Notification from "../notification/Notification";
+import { useNotification } from "../../hooks/useNotification";
 
 const Login = () => {
+  const notification = useNotification();
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = {
@@ -18,16 +21,20 @@ const Login = () => {
     // console.log(user, e);
     createNewUser(user)
       .then((response) => {
+        notification.set("User creation success", notification.SUCCESS);
+
         console.log(response.data);
       })
       .catch((error) => {
-        console.log(error.response.data);
+        notification.set(error.response.data.message, notification.ERROR);
       });
   };
   return (
     <Container>
+      <Notification notification={notification} />
       <AuthContainer>
         <AuthHeader>REGISTER FORM</AuthHeader>
+
         <form className="login-form" onSubmit={handleSubmit}>
           <Input
             type="text"
