@@ -1,44 +1,14 @@
-import styled from "@emotion/styled";
 import { Button, Input } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import "./login.css";
-
-const Container = styled.div({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  width: "100%",
-  height: "100vh",
-});
-
-const LoginContainer = styled.div({
-  border: "1px solid #FA901C",
-  width: "250px",
-  height: "400px",
-  borderRadius: "5px",
-});
-
-const LoginHeader = styled.div({
-  background: "#FA901C",
-  height: "30px",
-  display: "flex",
-  alignItems: "center",
-  paddingLeft: "10px",
-  color: "#FAF9FB",
-});
-
-const RegisterHere = styled.div({
-  fontSize: "16px",
-  margin: "0 20px",
-  color: "rgba(0, 0, 0, 0.7)",
-});
+import { Container, AuthContainer, AuthHeader, AuthLinks } from "./authStyles";
 
 const Login = () => {
   return (
     <Container>
-      <LoginContainer>
-        <LoginHeader>LOGIN FORM</LoginHeader>
+      <AuthContainer>
+        <AuthHeader>LOGIN FORM</AuthHeader>
         <form className="login-form">
           <Input type="email" placeholder="Email" sx={{ width: "100%" }} />
           <Input
@@ -55,14 +25,14 @@ const Login = () => {
           </Button>
         </form>
 
-        <RegisterHere>
+        <AuthLinks>
           Don't have an account ?<Link to="/register">Register here</Link>
-        </RegisterHere>
+        </AuthLinks>
 
-        <RegisterHere>
+        <AuthLinks>
           Forgot password ? <Link to="/forgot-password">Click here</Link>
-        </RegisterHere>
-      </LoginContainer>
+        </AuthLinks>
+      </AuthContainer>
     </Container>
   );
 };
