@@ -1,0 +1,28 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.notification-success {
+  background-color: lightgreen;
+  color: darkgreen;
+  border: 1px solid darkgreen;
+}
+
+.notification-error {
+  background-color: lightpink;
+  color: darkred;
+  border: 1px solid darkred;
+}
+
+.notification-hide {
+  display: none;
+}
+
+.notification-show {
+  display: flex;
+}
