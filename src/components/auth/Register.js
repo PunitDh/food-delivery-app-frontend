@@ -1,5 +1,4 @@
 import { Button, Input } from "@mui/material";
-import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import "./login.css";
 import { Container, AuthContainer, AuthHeader, AuthLinks } from "./authStyles";
@@ -7,8 +6,7 @@ import { createNewUser } from "../../api/auth";
 import Notification from "../notification/Notification";
 import { useNotification } from "../../hooks/useNotification";
 
-const Login = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
+const Register = ({ loggedIn, setLoggedIn }) => {
   const notification = useNotification();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -85,7 +83,7 @@ const Login = () => {
           </Button>
         </form>
 
-        {loggedIn && <Navigate to="/main" />}
+        {loggedIn && <Navigate to="/" />}
 
         <AuthLinks>
           Already have an account ?<Link to="/">Login here</Link>
@@ -95,4 +93,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
