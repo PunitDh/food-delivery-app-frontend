@@ -5,10 +5,18 @@ import ForgotPassword from "./components/auth/ForgotPassword";
 import Header from "./components/header/Header";
 import Main from "./components/main/Main";
 import Navbar from "./components/navbar/Navbar";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Parent from "./Parent";
+import { useState } from "react";
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
+
   // return (
   //   <div className="App">
   //     <Header />
@@ -22,12 +30,38 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<Parent Component={Login} />} />
-        <Route exact path="/main" element={<Parent Component={Main} />} />
+        <Route
+          exact
+          path="/login"
+          element={
+            <Parent
+              Component={Login}
+              componentProps={{
+                loggedIn,
+                setLoggedIn,
+              }}
+            />
+          }
+        />
+        <Route
+          exact
+          path="/"
+          element={
+            loggedIn ? <Parent Component={Main} /> : <Navigate to="/login" />
+          }
+        />
         <Route
           exact
           path="/register"
-          element={<Parent Component={Register} />}
+          element={
+            <Parent
+              Component={Register}
+              componentProps={{
+                loggedIn,
+                setLoggedIn,
+              }}
+            />
+          }
         />
         <Route
           exact
