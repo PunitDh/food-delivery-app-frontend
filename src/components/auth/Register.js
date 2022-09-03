@@ -1,6 +1,6 @@
 import { Button, Input } from "@mui/material";
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, Navigate } from "react-router-dom";
 import "./login.css";
 import { Container, AuthContainer, AuthHeader, AuthLinks } from "./authStyles";
 import { createNewUser } from "../../api/auth";
@@ -8,6 +8,7 @@ import Notification from "../notification/Notification";
 import { useNotification } from "../../hooks/useNotification";
 
 const Login = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
   const notification = useNotification();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,6 +23,9 @@ const Login = () => {
     createNewUser(user)
       .then((response) => {
         notification.set("User creation success", notification.SUCCESS);
+        e.target.reset();
+        localStorage.setItem(process.env.REACT_APP_TOKEN_NAME, response.data);
+        setLoggedIn(true);
 
         console.log(response.data);
       })
@@ -80,6 +84,8 @@ const Login = () => {
             Submit
           </Button>
         </form>
+
+        {loggedIn && <Navigate to="/main" />}
 
         <AuthLinks>
           Already have an account ?<Link to="/">Login here</Link>
