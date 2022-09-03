@@ -48,7 +48,7 @@ const Navbar = () => {
     indicator.current.style.transform = `translateX(calc(60px * ${activeNav}))`;
   }, [activeNav]);
 
-  console.log({ activeNav });
+  // console.log({ activeNav });
 
   return (
     <Container>

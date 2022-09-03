@@ -32,7 +32,7 @@ const IconContainer = styled.div({
 const Notification = ({ notification }) => {
   let timeout;
 
-  console.log(notification);
+  // console.log(notification);
 
   const handleClose = (time = notification.duration) => {
     timeout = setTimeout(() => {
