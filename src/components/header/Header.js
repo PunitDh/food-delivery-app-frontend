@@ -9,6 +9,7 @@ import {
   SearchRounded,
   ShoppingCartRounded,
 } from "@mui/icons-material";
+import SideBar from "../sidebar/SideBar";
 
 const Container = styled.header({
   display: "flex",
@@ -85,7 +86,13 @@ const ToggleMenu = styled.div({
   transform: "rotate(90deg)",
 });
 
-const Header = () => {
+const Header = ({ loggedIn, setLoggedIn }) => {
+  const [sideBar, setSideBar] = React.useState({
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+  });
   return (
     <Container>
       <img src={Logo} alt="" className="app-logo" />
@@ -101,10 +108,27 @@ const Header = () => {
         <ShoppingCartContent>2</ShoppingCartContent>
       </ShoppingCart>
 
+      <SideBar
+        sideBar={sideBar}
+        setSideBar={setSideBar}
+        loggedIn={loggedIn}
+        setLoggedIn={setLoggedIn}
+      />
       <ProfileContainer>
-        <ImgBox>
-          <img src={User} alt="" className="app-user" />
-        </ImgBox>
+        <div
+          onClick={() =>
+            setSideBar({
+              top: false,
+              left: false,
+              bottom: false,
+              right: true,
+            })
+          }
+        >
+          <ImgBox>
+            <img src={User} alt="" className="app-user" />
+          </ImgBox>
+        </div>
 
         <UserName>User</UserName>
 
