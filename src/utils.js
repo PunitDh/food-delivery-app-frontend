@@ -13,9 +13,8 @@ export const getDecodedJWT = (token) => {
 };
 
 export const getUserNameFromJWT = () => {
-  const user = JWTDecode(
-    localStorage.getItem(process.env.REACT_APP_TOKEN_NAME)
-  );
+  const token = localStorage.getItem(process.env.REACT_APP_TOKEN_NAME);
+  const user = token && JWTDecode(token);
   // console.log(user);
   return user;
 };
