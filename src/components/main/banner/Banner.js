@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import React from "react";
-import FoodBanner from "../../../assets/images/banner-bg.jpg";
 
 const Container = styled.div({
   width: "100%",
@@ -14,7 +13,7 @@ const BannerWrapper = styled.div({
   width: "100%",
   height: "130px",
   borderRadius: "10px",
-  background: `url(${FoodBanner}) no-repeat center`,
+  background: `url(https://prateek-khindri-food-delivery-app.s3.ap-southeast-2.amazonaws.com/banner-bg.jpg) no-repeat center`,
   backgroundSize: "cover",
   position: "relative",
   display: "flex",
