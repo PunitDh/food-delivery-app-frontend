@@ -14,13 +14,16 @@ import {
 import Parent from "./Parent";
 import { useState } from "react";
 import { getDecodedJWT } from "./utils";
+import AdminParent from "./admin/AdminParent";
+import AdminUsers from "./admin/components/AdminUsers";
+import AdminItems from "./admin/components/AdminItems ";
 
 function App() {
   const [token, setToken] = useState(
     localStorage.getItem(process.env.REACT_APP_TOKEN_NAME)
   );
   // console.log(JWTDecode("fjdkif"));
-  console.log(getDecodedJWT(token));
+  // console.log(getDecodedJWT(token));
   const [loggedIn, setLoggedIn] = useState(token && getDecodedJWT(token));
 
   // return (
@@ -80,6 +83,20 @@ function App() {
           exact
           path="/forgot-password"
           element={<Parent Component={ForgotPassword} />}
+        />
+
+        <Route exact path="/admin" element={<Navigate to="/admin/users" />} />
+
+        <Route
+          exact
+          path="/admin/users"
+          element={<AdminParent Component={AdminUsers} />}
+        />
+
+        <Route
+          exact
+          path="/admin/items"
+          element={<AdminParent Component={AdminItems} />}
         />
       </Routes>
     </Router>
