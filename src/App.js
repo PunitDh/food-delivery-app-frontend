@@ -13,9 +13,15 @@ import {
 } from "react-router-dom";
 import Parent from "./Parent";
 import { useState } from "react";
+import { getDecodedJWT } from "./utils";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [token, setToken] = useState(
+    localStorage.getItem(process.env.REACT_APP_TOKEN_NAME)
+  );
+  // console.log(JWTDecode("fjdkif"));
+  console.log(getDecodedJWT(token));
+  const [loggedIn, setLoggedIn] = useState(token && getDecodedJWT(token));
 
   // return (
   //   <div className="App">
@@ -47,7 +53,14 @@ function App() {
           exact
           path="/"
           element={
-            loggedIn ? <Parent Component={Main} /> : <Navigate to="/login" />
+            loggedIn ? (
+              <Parent
+                Component={Main}
+                componentProps={{ loggedIn, setLoggedIn }}
+              />
+            ) : (
+              <Navigate to="/login" />
+            )
           }
         />
         <Route

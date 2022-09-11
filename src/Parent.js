@@ -5,7 +5,7 @@ import Navbar from "./components/navbar/Navbar";
 const Parent = ({ Component, componentProps }) => {
   return (
     <div className="App">
-      <Header />
+      <Header {...componentProps} />
 
       <Component {...componentProps} />
 
