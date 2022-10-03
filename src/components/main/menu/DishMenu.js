@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MenuItem from "./MenuItem";
 import BurgerImage from "../../../assets/images/burger.png";
 import PizzaImage from "../../../assets/images/pizza.png";
 import ItemCard from "./ItemCard";
 import { Items } from "../../../data.js";
 import { CATEGORY } from "../../../constants.js";
+import axios from "axios";
 
 const Container = styled.div({
   width: "100%",
@@ -44,14 +45,19 @@ const SubMenuContainer = styled.div({
 
 const DishMenu = () => {
   const [currentCategory, setCurrentCategory] = useState(CATEGORY.burger);
-  const [menuItems, setMenuItems] = useState(
-    Items.filter((item) => item.category === currentCategory)
-  );
+  const [menuItems, setMenuItems] = useState(null);
 
   const setCategory = (category) => () => {
     setCurrentCategory(category);
-    setMenuItems(Items.filter((item) => item.category === category));
+    setMenuItems(menuItems?.filter((item) => item.category === category));
   };
+
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/items`).then((response) => {
+      console.log(response.data);
+      setMenuItems(response.data);
+    });
+  }, [currentCategory]);
 
   console.log(menuItems);
   return (
@@ -74,9 +80,11 @@ const DishMenu = () => {
         />
       </RowContainer>
       <DishItemContainer>
-        {menuItems.map((item, index) => (
-          <ItemCard key={index} item={item} />
-        ))}
+        {menuItems
+          ?.filter((item) => item.category === currentCategory)
+          ?.map((item, index) => (
+            <ItemCard key={index} item={item} />
+          ))}
       </DishItemContainer>
     </Container>
   );

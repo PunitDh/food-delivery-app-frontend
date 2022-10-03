@@ -98,7 +98,7 @@ const ItemCard = ({ item }) => {
         />
       </FavoriteContainer>
       <ImgBox>
-        <img src={item.imgSrc} alt="" className="item-img" />
+        <img src={item.image} alt="" className="item-img" />
       </ImgBox>
 
       <ItemContent>
