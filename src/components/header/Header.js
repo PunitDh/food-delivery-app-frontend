@@ -10,6 +10,7 @@ import {
   ShoppingCartRounded,
 } from "@mui/icons-material";
 import SideBar from "../sidebar/SideBar";
+import { useSelector } from "react-redux";
 
 const Container = styled.header({
   display: "flex",
@@ -93,6 +94,9 @@ const Header = ({ loggedIn, setLoggedIn }) => {
     bottom: false,
     right: false,
   });
+
+  const cartCount = useSelector((state) => state.cartCounter.value);
+
   return (
     <Container>
       <img src={Logo} alt="" className="app-logo" />
@@ -105,7 +109,7 @@ const Header = ({ loggedIn, setLoggedIn }) => {
 
       <ShoppingCart>
         <ShoppingCartRounded className="shopping-cart-icon" />
-        <ShoppingCartContent>2</ShoppingCartContent>
+        <ShoppingCartContent>{cartCount}</ShoppingCartContent>
       </ShoppingCart>
 
       <SideBar

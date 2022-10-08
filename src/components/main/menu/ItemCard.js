@@ -3,6 +3,12 @@ import { AddRounded, Favorite, StarRounded } from "@mui/icons-material";
 import React, { useState } from "react";
 import { formatCurrency } from "../../../utils";
 import "./itemcard.css";
+import { useDispatch } from "react-redux";
+import { increment } from "./ItemCartSlice.js";
+import axios from "axios";
+import jwtDecode from "jwt-decode";
+import Notification from "../../notification/Notification";
+import { useNotification } from "../../../hooks/useNotification";
 
 const Container = styled.div({
   width: "160px",
@@ -87,7 +93,26 @@ const ItemCard = ({ item }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [currentRating, setCurrentRating] = useState(Math.floor(item.rating));
 
+  const notification = useNotification();
   const handleRating = (value) => () => setCurrentRating(value);
+
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    const { cartId } = jwtDecode(
+      localStorage.getItem(process.env.REACT_APP_TOKEN_NAME)
+    );
+    console.log(cartId);
+    axios
+      .post(
+        `${process.env.REACT_APP_BACKEND_URL}/carts/${cartId}/add/${item.id}`
+      )
+      .then((response) => {
+        notification.set("Item has been added to cart", notification.SUCCESS);
+        console.log(response.data);
+      });
+    dispatch(increment());
+  };
 
   return (
     <Container>
@@ -121,11 +146,13 @@ const ItemCard = ({ item }) => {
             </Price>
           </Ratings>
 
-          <AddToCart>
+          <AddToCart onClick={handleAddToCart}>
             <AddRounded />
           </AddToCart>
         </Bottom>
       </ItemContent>
+
+      <Notification notification={notification} />
     </Container>
   );
 };
