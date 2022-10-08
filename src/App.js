@@ -17,6 +17,7 @@ import { getDecodedJWT } from "./utils";
 import AdminParent from "./admin/AdminParent";
 import AdminUsers from "./admin/components/AdminUsers";
 import AdminItems from "./admin/components/AdminItems ";
+import Cart from "./components/cart/Cart";
 
 function App() {
   const [token, setToken] = useState(
@@ -84,6 +85,8 @@ function App() {
           path="/forgot-password"
           element={<Parent Component={ForgotPassword} />}
         />
+
+        <Route exact path="/cart" element={<Parent Component={Cart} />} />
 
         <Route exact path="/admin" element={<Navigate to="/admin/users" />} />
 

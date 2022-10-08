@@ -54,12 +54,10 @@ const DishMenu = () => {
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/items`).then((response) => {
-      console.log(response.data);
       setMenuItems(response.data);
     });
   }, [currentCategory]);
 
-  console.log(menuItems);
   return (
     <Container>
       <MenuCard>

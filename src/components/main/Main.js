@@ -6,7 +6,6 @@ import DishMenu from "./menu/DishMenu";
 const Container = styled.main({
   width: "100%",
   height: "100vh",
-  marginTop: "60px",
 });
 const Main = () => {
   return (

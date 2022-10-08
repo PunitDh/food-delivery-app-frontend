@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { AddRounded, Favorite, StarRounded } from "@mui/icons-material";
 import React, { useState } from "react";
-import { formatCurrency } from "../../../utils";
+import { formatCurrency, getCartIdFromJWT } from "../../../utils";
 import "./itemcard.css";
 import { useDispatch } from "react-redux";
 import { increment } from "./ItemCartSlice.js";
@@ -9,6 +9,7 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import Notification from "../../notification/Notification";
 import { useNotification } from "../../../hooks/useNotification";
+import { addToCart } from "../../../api/cartHelper";
 
 const Container = styled.div({
   width: "160px",
@@ -99,18 +100,9 @@ const ItemCard = ({ item }) => {
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
-    const { cartId } = jwtDecode(
-      localStorage.getItem(process.env.REACT_APP_TOKEN_NAME)
-    );
-    console.log(cartId);
-    axios
-      .post(
-        `${process.env.REACT_APP_BACKEND_URL}/carts/${cartId}/add/${item.id}`
-      )
-      .then((response) => {
-        notification.set("Item has been added to cart", notification.SUCCESS);
-        console.log(response.data);
-      });
+    addToCart(item.id).then(() => {
+      notification.set("Item has been added to cart", notification.SUCCESS);
+    });
     dispatch(increment());
   };
 
