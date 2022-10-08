@@ -2,7 +2,7 @@ import { Button, Input } from "@mui/material";
 import { Link, Navigate } from "react-router-dom";
 import "./login.css";
 import { Container, AuthContainer, AuthHeader, AuthLinks } from "./authStyles";
-import { loginUser } from "../../api/auth";
+import { loginUser } from "../../api/authHelper";
 import { useNotification } from "../../hooks/useNotification";
 import Notification from "../notification/Notification";
 

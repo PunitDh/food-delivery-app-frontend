@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import Logo from "../../assets/images/logo.png";
 import User from "../../assets/images/user.jpg";
 import "./header.css";
+import { Link } from "react-router-dom";
 
 import {
   BarChart,
@@ -107,10 +108,12 @@ const Header = ({ loggedIn, setLoggedIn }) => {
         <input type="search" placeholder="Search" className="search-bar" />
       </InputBox>
 
-      <ShoppingCart>
-        <ShoppingCartRounded className="shopping-cart-icon" />
-        <ShoppingCartContent>{cartCount}</ShoppingCartContent>
-      </ShoppingCart>
+      <Link to="/cart">
+        <ShoppingCart>
+          <ShoppingCartRounded className="shopping-cart-icon" />
+          <ShoppingCartContent>{cartCount}</ShoppingCartContent>
+        </ShoppingCart>
+      </Link>
 
       <SideBar
         sideBar={sideBar}

@@ -18,3 +18,7 @@ export const getUserNameFromJWT = () => {
   // console.log(user);
   return user;
 };
+
+export const getCartIdFromJWT = () => {
+  return getUserNameFromJWT().cartId;
+};
